@@ -5,16 +5,17 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+                    @auth
+                        <h1>Bem vindo A Simple Blog</h1>
+                        <p><a href="{{ route('articles') }}">Acessar Artigos!</a></p>
+                    @endauth
 
-                    {{ __('You are logged in!') }}
+                    @guest
+                        <h1>Bem vindo A Simple Blog!</h1>
+                        <p>Este é um Blog Privado, Para começar a usar</p>
+                        <a href="{{ route('register') }}">cadastre-se</a>
+                    @endguest
                 </div>
             </div>
         </div>
